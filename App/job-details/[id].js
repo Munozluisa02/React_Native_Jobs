@@ -16,6 +16,7 @@ const JobDetails = () => {
         job_id: params.id,
     })
 
+
     const [refreshing, setRefreshing] = useState(false);
     const [activeTab, setActiveTab] = useState (tabs[0]);
 
@@ -25,29 +26,32 @@ const JobDetails = () => {
         setRefreshing(false)
       }, []);
 
+      console.log( data, 'afd')
+
     const displayTabContent = () => {
         switch(activeTab) {
             case "Qualifications":
                 return (
-                    <Specifics 
-                    title="Qualifications"
-                    points={data[0].job_hightlights?.Qualifications ?? ['N/A']}
-                />
-                )
+                  <Specifics
+                    title='Qualifications'
+                    points={data[0].job_highlights?.Qualifications ?? ["N/A"]}
+                  />
+                );
             case "About":
                 return (
                     <JobAbout 
                         info={data[0].job_description ?? "No data Provided"}
 
                     />
-                )
-            case "Resposabilities":
+                );
+            case "Responsabilities":
                 return (
                     <Specifics 
-                    title="Responsabilities"
-                    points={data[0].job_hightlights?.Responsabilities ?? ['N/A']}
+                    title='Responsabilities'
+                    points={data[0].job_highlights?.Responsibilities ?? ['N/A']}
                 />
                 );
+
                 default: 
                     break;
         }
